@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en">   
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -21,6 +21,8 @@
       --gap: 20px;
       --ff-heading: 'Playfair Display', serif;
       --ff-ui: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      --orange: #ff9800;
+      --green: #4CAF50;
     }
 
     * {
@@ -32,6 +34,28 @@
     html, body {
       height: 100%;
       font-size: 16px;
+    }
+
+    body {
+      position: relative;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Background image layer */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('bg.png') no-repeat center center/cover;
+      filter: grayscale(100%);
+      opacity: 0.5;
+      z-index: -1;
     }
 
     body {
@@ -53,6 +77,181 @@
       display: flex;
       flex-direction: column;
       gap: var(--gap);
+    }
+
+    /* Cafe Header - Original Style */
+    .cafe-header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding: 20px 0;
+    }
+
+    .cafe-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: var(--gold1);
+      text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+      line-height: 1;
+      margin-bottom: 5px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .cafe-name::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 2px;
+      background: var(--gold1);
+    }
+
+    .cafe-subtitle {
+      font-size: 1.2rem;
+      color: var(--orange);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-top: 10px;
+    }
+
+    .location-info {
+      font-size: 1rem;
+      margin-top: 15px;
+      line-height: 1.6;
+    }
+
+    .location-text {
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .address {
+      color: var(--green);
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+    }
+
+    .mobile-numbers {
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 1.05rem;
+      margin-bottom: 15px;
+    }
+
+    .veg-nonveg {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 20px;
+    }
+
+    .veg, .nonveg {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+    }
+
+    .veg {
+      color: #2e7d32;
+      background: rgba(46, 125, 50, 0.1);
+    }
+
+    .nonveg {
+      color: #c62828;
+      background: rgba(198, 40, 40, 0.1);
+    }
+
+    .veg:hover, .nonveg:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+
+    .symbol {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .veg .symbol {
+      background: #4caf50;
+      border: 2px solid #2e7d32;
+    }
+
+    .nonveg .symbol {
+      background: #f44336;
+      border: 2px solid #c62828;
+    }
+
+    /* Location Link Section - Added at bottom */
+    .location-link-section {
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 12px;
+      padding: 20px;
+      margin: 20px 0;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(6px);
+      text-align: center;
+    }
+
+    .location-link-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .location-link-header h3 {
+      font-family: var(--ff-heading);
+      color: var(--gold2);
+      font-size: 1.3rem;
+      margin: 0;
+    }
+
+    .location-icon {
+      width: 24px;
+      height: 24px;
+      color: var(--gold1);
+    }
+
+    .map-link-container {
+      display: flex;
+      justify-content: center;
+    }
+
+    .map-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: linear-gradient(90deg, var(--gold1), var(--gold2));
+      color: #0b0b0d;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .map-link:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+    }
+
+    .map-link svg {
+      width: 20px;
+      height: 20px;
     }
 
     /* Header and Navigation */
@@ -255,7 +454,7 @@
       background: transparent;
     }
 
-    /* Add to Cart Button - Width Kam Aur Animation */
+    /* Add to Cart Button */
     .btn-primary {
       background: linear-gradient(90deg, var(--gold1), var(--gold2));
       border: none;
@@ -328,151 +527,6 @@
         transform: scale(1);
         box-shadow: 0 4px 15px rgba(16, 185, 129, 0.15);
       }
-    }
-
-    /* Ripple Effect */
-    .btn-primary::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.5);
-      transform: translate(-50%, -50%);
-      transition: width 0.3s ease, height 0.3s ease;
-    }
-
-    .btn-primary:active::before {
-      width: 100px;
-      height: 100px;
-    }
-
-    /* Gallery Section */
-    .section-title {
-      font-family: var(--ff-heading);
-      font-size: 22px;
-      margin: 30px 0 16px 0;
-      color: var(--gold2);
-      text-align: center;
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-
-    .gallery-item {
-      border-radius: 10px;
-      overflow: hidden;
-      height: 120px;
-      position: relative;
-      cursor: pointer;
-      border: 1px solid rgba(255, 255, 255, 0.03);
-      box-shadow: 0 8px 24px rgba(2, 6, 23, 0.6);
-      transition: transform 0.3s ease;
-    }
-
-    .gallery-item:hover {
-      transform: translateY(-5px);
-    }
-
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    /* Contact Section */
-    .contact-section {
-      margin-top: 30px;
-      padding: 20px 0;
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
-      margin-top: 16px;
-    }
-
-    .contact-card {
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.015), rgba(255, 255, 255, 0.01));
-      border-radius: 12px;
-      padding: 18px;
-      border: 1px solid rgba(255, 255, 255, 0.03);
-      box-shadow: 0 8px 24px rgba(2, 6, 23, 0.6);
-    }
-
-    .contact-title {
-      font-family: var(--ff-heading);
-      font-size: 18px;
-      margin-bottom: 15px;
-      color: var(--gold2);
-    }
-
-    .contact-info {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .contact-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-    }
-
-    .contact-icon {
-      color: var(--gold2);
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-
-    .contact-text {
-      flex: 1;
-    }
-
-    .contact-text p {
-      margin: 0;
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    .contact-text a {
-      color: var(--gold2r);
-      text-decoration: none;
-    }
-
-    .contact-text a:hover {
-      text-decoration: underline;
-    }
-
-    .map-container {
-      border-radius: 12px;
-      overflow: hidden;
-      height: 200px;
-      margin-top: 15px;
-    }
-
-    .map-container iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    /* Footer */
-    .footer {
-      text-align: center;
-      padding: 20px 0;
-      color: var(--muted);
-      font-size: 14px;
-      border-top: 1px solid rgba(255, 255, 255, 0.03);
-      margin-top: 20px;
     }
 
     /* Cart Styles */
@@ -685,52 +739,168 @@
       font-size: 16px;
     }
 
-    /* Table Number Input - Updated to Full Name */
-    .table-number-section {
-      margin-bottom: 20px;
-      padding: 16px;
-      background: rgba(255, 255, 255, 0.02);
+    /* Delivery Options in Cart */
+    .delivery-options {
+      margin: 20px 0;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.015);
       border-radius: 10px;
       border: 1px solid rgba(255, 255, 255, 0.03);
     }
 
-    .table-number-label {
-      display: block;
-      margin-bottom: 8px;
+    .options-title {
+      font-family: var(--ff-heading);
+      font-size: 18px;
+      margin-bottom: 15px;
+      color: var(--gold2);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .options-title svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .delivery-option-buttons {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .option-btn {
+      flex: 1;
+      padding: 12px;
+      border-radius: 8px;
+      background: transparent;
+      border: 2px solid rgba(255, 255, 255, 0.08);
+      color: var(--muted);
       font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .option-btn:hover {
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .option-btn.active {
+      background: linear-gradient(90deg, rgba(212, 175, 55, 0.1), rgba(255, 204, 102, 0.1));
+      border-color: var(--gold1);
       color: var(--gold2);
     }
 
-    .table-number-input {
+    .option-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* Delivery Forms */
+    .delivery-form {
+      display: none;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .delivery-form.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .form-input {
       width: 100%;
-      padding: 12px;
+      padding: 12px 16px;
       border-radius: 8px;
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(255, 255, 255, 0.05);
       color: white;
       font-size: 16px;
+      transition: all 0.3s ease;
     }
 
-    .table-number-input:focus {
+    .form-input:focus {
       outline: none;
       border-color: var(--gold2);
+      box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.1);
     }
 
-    /* Print Button */
-    .print-container {
+    .form-input::placeholder {
+      color: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Customer Details Summary */
+    .customer-details-summary {
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 8px;
+      padding: 15px;
+      margin: 15px 0;
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      display: none;
+    }
+
+    .customer-details-summary.active {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .summary-title {
+      font-weight: 600;
+      color: var(--gold2);
+      margin-bottom: 10px;
       display: flex;
-      justify-content: center;
-      margin-top: 20px;
+      align-items: center;
+      gap: 8px;
     }
 
-    .btn-ghost {
-      background: transparent;
-      border: 1px solid rgba(255, 255, 255, 0.04);
-      padding: 12px 20px;
-      border-radius: 12px;
+    .summary-title svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .summary-details {
+      font-size: 14px;
       color: var(--muted);
-      cursor: pointer;
-      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .summary-details div {
+      margin-bottom: 5px;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 20px 0;
+      color: var(--muted);
+      font-size: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.03);
+      margin-top: 20px;
     }
 
     /* Gold Line */
@@ -742,21 +912,6 @@
       margin: 8px 0 16px 0;
     }
 
-    .title {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      justify-content: flex-start;
-    }
-
-    .site-logo {
-      width: 200px;
-      height: 200px;
-      object-fit: contain;
-      margin-left: 10px;
-      border-radius: 8px; /* make corners slightly round */
-    }
-
     /* Tablet and Desktop Styles */
     @media (min-width: 768px) {
       body {
@@ -765,7 +920,7 @@
       
       .container {
         display: grid;
-        grid-template-columns: 300px 1fr;
+        grid-template-columns: 1fr;
         gap: 24px;
         align-items: start;
       }
@@ -794,14 +949,6 @@
         grid-template-columns: repeat(2, 1fr);
       }
       
-      .gallery-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-      
-      .contact-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-      
       .cart-actions {
         flex-direction: row;
       }
@@ -810,10 +957,6 @@
     @media (min-width: 1024px) {
       .menu-grid {
         grid-template-columns: repeat(3, 1fr);
-      }
-      
-      .gallery-grid {
-        grid-template-columns: repeat(4, 1fr);
       }
     }
 
@@ -834,18 +977,30 @@
 </head>
 <body>
   <div class="container">
+    <!-- Cafe Header - Original Style -->
+    <div class="cafe-header">
+      <div class="cafe-name"></div>
+      <div class="cafe-subtitle"></div>
+      <div class="location-info">
+        <div class="location-text">Location:</div>
+        <div class="address">Uran Karanja Road, Ta.Uran, Dist.Raigad </div>
+        <div class="mobile-numbers">Mo no.9321574504/9969311197</div>
+      </div>
+      <div class="veg-nonveg">
+        <div class="veg">
+          <span class="symbol"></span>
+          <span>Veg</span>
+        </div>
+        <div class="nonveg">
+          <span class="symbol"></span>
+          <span>Non Veg</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Menu -->
     <main class="menu">
       <div class="menu-head">
-        <div>
-          <h2 class="title">
-        आगरी कट्टा ढाबा
-          <img src="logo.png" alt="Logo" class="site-logo">
-          </h2>
-
-          <div class="subtitle"> •व्हेज  नॉन-व्हेज </div>
-          <div class="gold-line"></div>
-        </div>
-
         <div class="controls">
           <div class="search" role="search">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
@@ -855,11 +1010,8 @@
             <input id="search" placeholder="Search dishes, ingredients..." />
           </div>
 
-          <div class="tabs" role="tablist">
-           
-  <button class="tab active" data-cat="all">All</button>
-<!-- <button class="tab" data-cat="VEG SOUPS">VEG SOUPS</button> -->
-<!-- <button class="tab" data-cat="NON-VEG SOUPS">NON-VEG SOUPS</button> -->
+          <div class="tabs-scroll">
+            <button class="tab active" data-cat="all">All</button>
 <button class="tab" data-cat="STARTERS (NON VEG)">STARTERS (NON VEG)</button>
 <button class="tab" data-cat="STARTERS (VEG)">VEG STARTERS</button>
 <button class="tab" data-cat="TANDOOR DISHES">TANDOOR DISHES</button>
@@ -880,11 +1032,27 @@
       <section class="menu-grid" id="menuGrid">
         <!-- Cards injected by JS -->
       </section>
-
-      <div style="display:flex;justify-content:flex-end;margin-top:6px">
-        <!-- <button class="btn-ghost" onclick="window.print()">Print Menu</button> -->
-      </div>
     </main>
+
+    <!-- Location Link Section - Added at bottom -->
+    <div class="location-link-section">
+      <div class="location-link-header">
+        <svg class="location-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"></path>
+          <circle cx="12" cy="10" r="3"></circle>
+        </svg>
+        <h3>Find Us on Google Maps</h3>
+      </div>
+      <div class="map-link-container">
+        <a href="https://maps.app.goo.gl/fXp183eCt5knnheV9" target="_blank" class="map-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          Open in Google Maps
+        </a>
+      </div>
+    </div>
   </div>
 
   <!-- Cart Button -->
@@ -907,10 +1075,59 @@
         <button class="close-cart" id="closeCart">&times;</button>
       </div>
       
-      <!-- Table Number Input Section - Updated to Full Name -->
-      <div class="table-number-section">
-        <label for="tableNumber" class="table-number-label">Enter Your Full Name</label>
-        <input type="text" id="tableNumber" class="table-number-input" placeholder="e.g., John Smith" />
+      <!-- Delivery Options -->
+      <div class="delivery-options">
+        <h4 class="options-title">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+          </svg>
+          Select Delivery Type
+        </h4>
+        
+        <div class="delivery-option-buttons">
+          <button class="option-btn active" id="restaurantOption" onclick="selectDeliveryOption('restaurant')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 12v12M15 12v12M5 12l-2 9h18l-2-9M5 12V8c0-1.105.895-2 2-2h10c1.105 0 2 .895 2 2v4"/>
+              <circle cx="12" cy="6" r="2"/>
+            </svg>
+            Restaurant
+          </button>
+          <button class="option-btn" id="homeDeliveryOption" onclick="selectDeliveryOption('home')">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+            </svg>
+            Home Delivery
+          </button>
+        </div>
+        
+        <!-- Restaurant Form -->
+        <div class="delivery-form active" id="restaurantForm">
+          <div class="form-group">
+            <label class="form-label" for="tableNumber">Table Number</label>
+            <input type="text" id="tableNumber" class="form-input" placeholder="Enter your table number (e.g., Table 5, Booth 2)" />
+          </div>
+        </div>
+        
+        <!-- Home Delivery Form -->
+        <div class="delivery-form" id="homeDeliveryForm">
+          <div class="form-group">
+            <label class="form-label" for="customerName">Full Name</label>
+            <input type="text" id="customerName" class="form-input" placeholder="Enter your full name" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="customerMobile">Mobile Number</label>
+            <input type="tel" id="customerMobile" class="form-input" placeholder="Enter your mobile number" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="customerAddress">Delivery Address</label>
+            <textarea id="customerAddress" class="form-input" placeholder="Enter your complete address" rows="3"></textarea>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Customer Details Summary -->
+      <div class="customer-details-summary" id="customerDetailsSummary">
+        <!-- Will be populated by JavaScript -->
       </div>
       
       <div class="cart-items" id="cartItems">
@@ -936,9 +1153,9 @@
   </div>
 
   <script>
+    // Menu Data
     const data = [
 
-    
 {"id": 1, "cat": "STARTERS (NON VEG)", "name": "Chicken Crispy/चिकन क्रिस्पी", "price": "₹450", "desc": "Crispy fried chicken starter", "tags": ["Non-Veg"], "img": "img/chicken_crispy.jpeg"},
 {"id": 2, "cat": "STARTERS (NON VEG)", "name": "Chicken Chilly/चिकन चिल्ली", "price": "₹250", "desc": "Spicy chicken with green chillies", "tags": ["Non-Veg"], "img": "img/chicken_chilly.jpeg"},
 {"id": 3, "cat": "STARTERS (NON VEG)", "name": "Chicken Manchurian/चिकन मंचूरियन", "price": "₹220", "desc": "Indo-Chinese chicken manchurian", "tags": ["Non-Veg"], "img": "img/chicken_manchurian.jpeg"},
@@ -972,10 +1189,10 @@
 {"id": 27, "cat": "TANDOOR DISHES", "name": "Chicken Tandoor (Full)/चिकन टंडूर (फुल)", "price": "₹220", "desc": "Full tandoori chicken", "tags": ["Non-Veg", "Tandoor"], "img": "img/chicken_tandoor_full.jpeg"},
 {"id": 28, "cat": "TANDOOR DISHES", "name": "Chicken Tandoor (Half)/चिकन टंडूर (हाफ)", "price": "₹130", "desc": "Half tandoori chicken", "tags": ["Non-Veg", "Tandoor"], "img": "img/chicken_tandoor_full.jpeg"},
 {"id": 29, "cat": "TANDOOR DISHES", "name": "Tandoori Platter (Full)/टंडूरी प्लॅटर (फुल)", "price": "₹280", "desc": "Full tandoori platter", "tags": ["Non-Veg", "Tandoor"], "img": "img/tandoori_platter_full.jpeg"},
-{"id": 30, "cat": "TANDOOR DISHES", "name": "Pahadi Tandoor (Full)/पहाडी टंडूर (फुल)", "price": "₹250", "desc": "Full pahadi tandoori chicken", "tags": ["Non-Veg", "Tandoor"], "img": "img/pahadi_tandoor_full.jpeg"},
-{"id": 31, "cat": "TANDOOR DISHES", "name": "Pahadi Tandoor (Half)/पहाडी टंडूर (हाफ)", "price": "₹270", "desc": "Half pahadi tandoori chicken", "tags": ["Non-Veg", "Tandoor"], "img": "img/pahadi_tandoor_full.jpeg"},
+{"id": 30, "cat": "TANDOOR DISHES", "name": "Pahadi Tandoor (Full)/पहाडी टंडूर (फुल)", "price": "₹250", "desc": "Full pahadi tandoori chicken", "tags": ["Non-Veg", "Tandoor"], "img": "img/tandoori_platter_full.jpeg"},
+{"id": 31, "cat": "TANDOOR DISHES", "name": "Pahadi Tandoor (Half)/पहाडी टंडूर (हाफ)", "price": "₹270", "desc": "Half pahadi tandoori chicken", "tags": ["Non-Veg", "Tandoor"], "img": "img/tandoori_platter_full.jpeg"},
 {"id": 32, "cat": "TANDOOR DISHES", "name": "Chicken Black Paper Kabab (Full)/चिकन ब्लॅक पेपर कबाब (फुल)", "price": "₹220", "desc": "Full black pepper chicken kabab", "tags": ["Non-Veg", "Tandoor"], "img": "img/chicken_black_pepper_kabab_full.jpeg"},
-{"id": 33, "cat": "TANDOOR DISHES", "name": "Chicken Golden Tandoori (Full)/चिकन गोल्डन टंडूरी (फुल)", "price": "₹450", "desc": "Full golden tandoori chicken", "tags": ["Non-Veg", "Tandoor"], "img": "img/chicken_golden_tandoori_half.jpeg"},
+{"id": 33, "cat": "TANDOOR DISHES", "name": "Chicken Golden Tandoori (Full)/चिकन गोल्डन टंडूरी (फुल)", "price": "₹450", "desc": "Full golden tandoori chicken", "tags": ["Non-Veg", "Tandoor"], "img": "img/chicken_black_pepper_kabab_full.jpeg"},
 {"id": 34, "cat": "TANDOOR DISHES", "name": "Chicken Golden Tandoori (Half)/चिकन गोल्डन टंडूरी (हाफ)", "price": "₹250", "desc": "Half golden tandoori chicken", "tags": ["Non-Veg", "Tandoor"], "img": "img/chicken_golden_tandoori_half.jpeg"},
 {"id": 35, "cat": "TANDOOR DISHES", "name": "Pomfret Tandoori/पामफ्रेट टंडूरी", "price": "APS", "desc": "Tandoori pomfret fish", "tags": ["Non-Veg", "Tandoor", "Fish"], "img": "img/pomfret_tandoori.jpeg"},
 {"id": 36, "cat": "TANDOOR DISHES", "name": "Chicken Golden Special Tandoori (Full)/चिकन गोल्डन स्पेशल टंडूरी (फुल)", "price": "₹540", "desc": "Full special golden tandoori chicken", "tags": ["Non-Veg", "Tandoor"], "img": "img/chicken_golden_tandoori_half.jpeg"},
@@ -1214,10 +1431,27 @@
 
 
 
-  ];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    ];
 
     // Cart functionality
     let cart = [];
+    let deliveryType = 'restaurant'; // Default to restaurant
     const cartButton = document.getElementById('cartButton');
     const cartModal = document.getElementById('cartModal');
     const closeCart = document.getElementById('closeCart');
@@ -1227,11 +1461,84 @@
     const cartTotal = document.getElementById('cartTotal');
     const clearCart = document.getElementById('clearCart');
     const whatsappOrder = document.getElementById('whatsappOrder');
-    const tableNumberInput = document.getElementById('tableNumber');
+    const customerDetailsSummary = document.getElementById('customerDetailsSummary');
+
+    // Delivery option selection
+    function selectDeliveryOption(type) {
+      deliveryType = type;
+      
+      // Update button states
+      document.getElementById('restaurantOption').classList.toggle('active', type === 'restaurant');
+      document.getElementById('homeDeliveryOption').classList.toggle('active', type === 'home');
+      
+      // Show/hide forms
+      document.getElementById('restaurantForm').classList.toggle('active', type === 'restaurant');
+      document.getElementById('homeDeliveryForm').classList.toggle('active', type === 'home');
+      
+      // Update details summary
+      updateCustomerDetailsSummary();
+    }
+
+    // Update customer details summary
+    function updateCustomerDetailsSummary() {
+      let summaryHTML = '';
+      let showSummary = false;
+      
+      if (deliveryType === 'restaurant') {
+        const tableNumber = document.getElementById('tableNumber').value.trim();
+        
+        if (tableNumber) {
+          showSummary = true;
+          summaryHTML = `
+            <div class="summary-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 12v12M15 12v12M5 12l-2 9h18l-2-9M5 12V8c0-1.105.895-2 2-2h10c1.105 0 2 .895 2 2v4"/>
+                <circle cx="12" cy="6" r="2"/>
+              </svg>
+              Restaurant Order
+            </div>
+            <div class="summary-details">
+              <div><strong>Type:</strong> Dine-in</div>
+              <div><strong>Table Number:</strong> ${tableNumber}</div>
+            </div>
+          `;
+        }
+      } else {
+        const name = document.getElementById('customerName').value.trim();
+        const mobile = document.getElementById('customerMobile').value.trim();
+        const address = document.getElementById('customerAddress').value.trim();
+        
+        if (name || mobile || address) {
+          showSummary = true;
+          summaryHTML = `
+            <div class="summary-title">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+              </svg>
+              Delivery Order
+            </div>
+            <div class="summary-details">
+              <div><strong>Type:</strong> Home Delivery</div>
+              ${name ? `<div><strong>Name:</strong> ${name}</div>` : ''}
+              ${mobile ? `<div><strong>Mobile:</strong> ${mobile}</div>` : ''}
+              ${address ? `<div><strong>Address:</strong> ${address}</div>` : ''}
+            </div>
+          `;
+        }
+      }
+      
+      if (showSummary) {
+        customerDetailsSummary.innerHTML = summaryHTML;
+        customerDetailsSummary.classList.add('active');
+      } else {
+        customerDetailsSummary.classList.remove('active');
+      }
+    }
 
     // Toggle cart modal
     cartButton.addEventListener('click', () => {
       cartModal.classList.add('open');
+      updateCustomerDetailsSummary();
     });
 
     closeCart.addEventListener('click', () => {
@@ -1340,23 +1647,63 @@
       updateCart();
     });
 
-    // WhatsApp order function
+    // WhatsApp order function with customer details
     whatsappOrder.addEventListener('click', () => {
       if (cart.length === 0) {
         alert('Your cart is empty!');
         return;
       }
       
-      const fullName = tableNumberInput.value.trim();
-      if (!fullName) {
-        alert('Please enter your full name');
+      // Validate details based on delivery type
+      let validationPassed = true;
+      let validationMessage = '';
+      
+      if (deliveryType === 'restaurant') {
+        const tableNumber = document.getElementById('tableNumber').value.trim();
+        
+        if (!tableNumber) {
+          validationPassed = false;
+          validationMessage = 'Please enter your table number';
+        }
+      } else {
+        const customerName = document.getElementById('customerName').value.trim();
+        const customerMobile = document.getElementById('customerMobile').value.trim();
+        const customerAddress = document.getElementById('customerAddress').value.trim();
+        
+        if (!customerName || !customerMobile || !customerAddress) {
+          validationPassed = false;
+          validationMessage = 'Please fill in all delivery details (Name, Mobile, Address)';
+        }
+      }
+      
+      if (!validationPassed) {
+        alert(validationMessage);
         return;
       }
       
-      let message = `Hello! I would like to place an order from: ${fullName}:\n\n`;
+      let message = `Hello! I would like to place an order:\n\n`;
+      
+      // Add delivery details
+      if (deliveryType === 'restaurant') {
+        const tableNumber = document.getElementById('tableNumber').value.trim();
+        
+        message += `**Delivery Type:** Dine-in\n`;
+        message += `**Table Number:** ${tableNumber}\n\n`;
+      } else {
+        const customerName = document.getElementById('customerName').value.trim();
+        const customerMobile = document.getElementById('customerMobile').value.trim();
+        const customerAddress = document.getElementById('customerAddress').value.trim();
+        
+        message += `**Delivery Type:** Home Delivery\n`;
+        message += `**Name:** ${customerName}\n`;
+        message += `**Mobile:** ${customerMobile}\n`;
+        message += `**Address:** ${customerAddress}\n\n`;
+      }
+      
+      message += `**Order Details:**\n`;
       
       cart.forEach(item => {
-        message += `${item.name} - ${item.quantity} x ${item.price}\n`;
+        message += `• ${item.name} - ${item.quantity} x ${item.price}\n`;
       });
       
       const totalAmount = cart.reduce((sum, item) => {
@@ -1364,14 +1711,20 @@
         return sum + (price * item.quantity);
       }, 0);
       
-      message += `\nTotal: ₹${totalAmount}\n\nThank you!`;
+      message += `\n**Total Amount:** ₹${totalAmount}\n\n`;
+      message += `Thank you!`;
       
       // Encode the message for WhatsApp URL
       const encodedMessage = encodeURIComponent(message);
-      const whatsappURL = `https://wa.me/+919370951417?text=${encodedMessage}`;
+      const whatsappURL = `https://wa.me/919512220336?text=${encodedMessage}`;
       
       // Open WhatsApp in a new tab
       window.open(whatsappURL, '_blank');
+      
+      // Close cart modal after order
+      setTimeout(() => {
+        cartModal.classList.remove('open');
+      }, 1000);
     });
 
     // Render menu items
@@ -1425,8 +1778,12 @@
       renderMenuItems(filteredItems);
     }
 
-    // Initialize the menu
+    // Initialize the page
     document.addEventListener('DOMContentLoaded', () => {
+      // Set default delivery option
+      selectDeliveryOption('restaurant');
+      
+      // Render menu items
       renderMenuItems(data);
       
       // Tab functionality
@@ -1442,15 +1799,19 @@
       document.getElementById('search').addEventListener('input', (e) => {
         searchItems(e.target.value);
       });
+      
+      // Update details summary when form inputs change
+      document.getElementById('tableNumber').addEventListener('input', updateCustomerDetailsSummary);
+      document.getElementById('customerName').addEventListener('input', updateCustomerDetailsSummary);
+      document.getElementById('customerMobile').addEventListener('input', updateCustomerDetailsSummary);
+      document.getElementById('customerAddress').addEventListener('input', updateCustomerDetailsSummary);
     });
 
     // Make functions available globally
     window.addToCart = addToCart;
     window.removeFromCart = removeFromCart;
     window.updateQuantity = updateQuantity;
+    window.selectDeliveryOption = selectDeliveryOption;
   </script>
 </body>
 </html>
-
-
-
